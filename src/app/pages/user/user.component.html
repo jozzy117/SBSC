@@ -1,0 +1,62 @@
+<ngx-spinner></ngx-spinner>
+<nz-layout>
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+      <div class="logo">Token Expires: {{tokenExpiration | date: 'dd-MM-yyyy h:mm:ss'}}</div>
+      <ul nz-menu nzTheme="dark" nzMode="inline">
+        <li nz-menu-item [routerLink]="['/home']" [queryParams]="{ pageTitle: 'Home' }">
+            <i nz-icon nzType="home"></i>
+            <span>Home</span>
+        </li>
+          <li nz-menu-item [routerLink]="['/my-account']" [queryParams]="{ pageTitle: 'My-Account' }">
+              <i nz-icon nzType="user"></i>
+              <span>My Account</span>
+          </li>
+          <li nz-submenu nzTitle="User" nzIcon="team">
+            <ul>
+              <li nz-menu-item [routerLink]="['/new-user']" [queryParams]="{ pageTitle: 'New User' }">New User</li>
+              <li nz-menu-item [routerLink]="['/users']" [queryParams]="{ pageTitle: 'Users' }">Users</li>
+            </ul>
+          </li>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <nz-header>
+        <i
+          class="trigger"
+          nz-icon
+          [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          (click)="isCollapsed = !isCollapsed"
+        ></i>
+      </nz-header>
+      <nz-content>
+        <nz-breadcrumb>
+          <nz-breadcrumb-item>Page</nz-breadcrumb-item>
+          <nz-breadcrumb-item>{{pageTitle}}</nz-breadcrumb-item>
+        </nz-breadcrumb>
+        <!-- main content begins -->
+        <div class="inner-content">
+            <div class="custom_width">
+                <nz-form-item>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>Name</nz-form-label>
+                    <nz-form-control>
+                      <input nz-input placeholder="Name" id="name" [(ngModel)]="fullName" [disabled]="!isEditing"/>
+                  </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div class="custom_width">
+              <nz-form-item>
+                  <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="job" nzRequired>Job</nz-form-label>
+                  <nz-form-control>
+                      <input nz-input placeholder="Job" id="job" [(ngModel)]="user.email" [disabled]="!isEditing" />
+                  </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div>
+                <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click)="updateUser()">{{isEditing ? 'Update' : 'Edit'}}</button>
+            </div>
+        </div>
+        <!-- main content ends -->
+      </nz-content>
+      <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
+    </nz-layout>
+  </nz-layout>

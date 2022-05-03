@@ -1,0 +1,26 @@
+.reg_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+[nz-form] {
+    /* max-width: 600px; */
+    width: 42%;
+  }
+
+  .phone-select {
+    width: 70px;
+  }
+
+  .register-are {
+    margin-bottom: 8px;
+  }
+
+  .zorro_eye {
+    top: 15%;
+    position: absolute;
+    right: 6%;
+  }
